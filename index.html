@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Book library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="style.css" />
         <script src="script.js" defer></script>
     </head>
@@ -11,35 +12,111 @@
         <div class="container">
             <header class="header">
                 <div class="common-width">
-                    <h1 class="heading-text">Book library</h1>
+                    <h1 class="header-heading-text">Book library</h1>
                 </div>
             </header>
 
             <main class="main">
-                <div class="common-width">
-                    <button type="button" id="add-book-btn">Add book</button>
-                    <div class="books-area">
-                        <div class="card">
-                            <div>
-                                <p class="card-label">Title</p>
-                                <p class="title-n-author title">The self taught programmer </p>
-                            </div>
-                            <div>
-                                <p class="card-label">Author</p>
-                                <p class="title-n-author author">cory althoff</p>
-                            </div>
-                            <div>
-                                <span class="card-pages-label">Pages : </span>
-                                <span class="no-pages">279</span>
-                            </div>
-                            <div class="card-buttons-container">
-                                <button type="button" class="is-book-read-button">read</button>
-                                <button type="button" class="remove-card-button">remove</button>
-                            </div>
+                <div class="main-content common-width">
+                    <button type="button" id="dialog-box-add-open-btn">Add book</button>
+                    <div class="bookshelf">
+                        <div class="shelf">
+                            <p class="shelf-heading-text">Wish List</p>
+                            <div class="shelf-books-area" id="shelf-books-area-wish-list"></div>
+                        </div>
+                        <div class="shelf">
+                            <p class="shelf-heading-text">Reading</p>
+                            <div class="shelf-books-area" id="shelf-books-area-reading"></div>
+                        </div>
+                        <div class="shelf">
+                            <p class="shelf-heading-text">Completed</p>
+                            <div class="shelf-books-area" id="shelf-books-area-completed"></div>
                         </div>
                     </div>
                 </div>
             </main>
+
+            <footer class="footer">
+                <blockquote class="footer-qoute">
+                    <q>If you don’t like to read, you haven’t found the right book.</q> - J.K. Rowling
+                </blockquote>
+            </footer>
         </div>
+
+        <dialog class="dialog" id="dialog-box-add">
+            <div class="dialog-box-header">
+                <p class="dialog-box-heading-text">New Book</p>
+                <button type="button" class="dialog-box-close-btn" id="dialog-box-add-close-btn">X</button>
+            </div>
+            <form class="form" id="form-add" method="dialog">
+                <div class="form-field">
+                    <p><label class="form-label" for="form-add-book-title">TITLE :</label></p>
+                    <input type="text" class="form-input" id="form-add-book-title" name="title" autofocus autocomplete="off" spellcheck="false" required />
+                </div>
+                <div class="form-field">
+                    <p><label class="form-label" for="form-add-book-author">AUTHOR :</label></p>
+                    <input type="text" class="form-input" id="form-add-book-author" name="author" autocomplete="off" spellcheck="false" required />
+                </div>
+                <div class="form-field">
+                    <p><label class="form-label" for="form-add-book-publisher">PUBLISHER :</label></p>
+                    <input type="text" class="form-input" id="form-add-book-publisher" name="publisher" autocomplete="off" spellcheck="false" required />
+                </div>
+                <div class="form-field">
+                    <p><label class="form-label" for="form-add-book-year">YEAR :</label></p>
+                    <input type="number" class="form-input" id="form-add-book-year" name="year" min="1800" max="2100" maxlength="4" required />
+                </div>
+                <div class="form-field">
+                    <p><label class="form-label" for="form-add-book-status">STATUS :</label></p>
+                    <select class="form-select" id="form-add-book-status" name="status" >
+                        <option value="0" selected>In list</option>
+                        <option value="1">Reading</option>
+                        <option value="2">Completed</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <button type="submit" class="form-submit-btn" id="form-add-add-btn">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            </form>
+        </dialog>
+
+        <dialog class="dialog" id="dialog-box-edit">
+            <div class="dialog-box-header">
+                <p class="dialog-box-heading-text">EDIT</p>
+                <button type="button" class="dialog-box-close-btn" id="dialog-box-edit-close-btn">X</button>
+            </div>
+            <form class="form" id="form-edit" method="dialog">
+                <div class="form-field">
+                    <p><label class="form-label" for="form-edit-book-title">TITLE :</label></p>
+                    <input type="text" class="form-input" id="form-edit-book-title" name="title" autofocus autocomplete="off" spellcheck="false" required />
+                </div>
+                <div class="form-field">
+                    <p><label class="form-label" for="form-edit-book-author">AUTHOR :</label></p>
+                    <input type="text" class="form-input" id="form-edit-book-author" name="author" autocomplete="off" spellcheck="false" required />
+                </div>
+                <div class="form-field">
+                    <p><label class="form-label" for="form-edit-book-publisher">PUBLISHER :</label></p>
+                    <input type="text" class="form-input" id="form-edit-book-publisher" name="publisher" autocomplete="off" spellcheck="false" required />
+                </div>
+                <div class="form-field">
+                    <p><label class="form-label" for="form-edit-book-year">Year :</label></p>
+                    <input type="number" class="form-input" id="form-edit-book-year" name="year" min="1800" max="2100" maxlength="4" required />
+                </div>
+                <div class="form-field">
+                    <p><label class="form-label" for="form-edit-book-status">STATUS :</label></p>
+                    <select class="form-select" name="status" id="form-edit-book-status">
+                        <option value="0">In list</option>
+                        <option value="1">Reading</option>
+                        <option value="2">Completed</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <button type="submit" class="form-submit-btn" id="form-edit-edit-btn">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                    </button>
+                </div>
+            </form>
+        </dialog>
     </body>
 </html>
