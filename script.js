@@ -1,3 +1,5 @@
+"use strict";
+
 // Dialog box elements
 const dialogBoxAdd = document.getElementById("dialog-box-add"); // Dialog box for adding a new book
 const dialogBoxEdit = document.getElementById("dialog-box-edit"); // Dialog box for editing an existing book
